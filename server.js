@@ -4,6 +4,7 @@ import {
   createEmployee,
   getEmployee,
   getEmployees,
+  updateEmployee,
 } from "./model/employeesModel.js";
 
 const PORT = 3000;
@@ -27,6 +28,12 @@ app.get("/api/v1/getEmployee/:id", async (req, res) => {
 // CREATE
 app.post("/api/v1/createEmployee", async (req, res) => {
   res.json(await createEmployee(req.body));
+});
+
+// UPDATE
+app.put("/api/v1/updateEmployee/:id", async (req, res) => {
+  const { id } = req.params;
+  res.json(await updateEmployee(id, req.body));
 });
 
 app.listen(PORT, (error) => {
