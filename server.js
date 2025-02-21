@@ -1,6 +1,10 @@
 import express from "express";
 import { connectToMongoDB } from "./config/dbConfig.js";
-import { getEmployee, getEmployees } from "./model/employeesModel.js";
+import {
+  createEmployee,
+  getEmployee,
+  getEmployees,
+} from "./model/employeesModel.js";
 
 const PORT = 3000;
 const app = express();
@@ -18,6 +22,11 @@ app.get("/api/v1/getEmployees", async (req, res) => {
 app.get("/api/v1/getEmployee/:id", async (req, res) => {
   const { id } = req.params;
   res.json(await getEmployee(id));
+});
+
+// CREATE
+app.post("/api/v1/createEmployee", async (req, res) => {
+  res.json(await createEmployee(req.body));
 });
 
 app.listen(PORT, (error) => {
