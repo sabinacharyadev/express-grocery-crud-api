@@ -5,7 +5,7 @@ export const getEmployees = () => {
 };
 
 export const getEmployee = (id) => {
-  return employeesModel.find(id);
+  return employeesModel.findById(id);
 };
 
 export const createEmployee = (employeeObject) => {
