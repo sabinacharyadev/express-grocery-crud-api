@@ -2,6 +2,7 @@ import express from "express";
 import { connectToMongoDB } from "./config/dbConfig.js";
 import {
   createEmployee,
+  deleteEmployee,
   getEmployee,
   getEmployees,
   updateEmployee,
@@ -34,6 +35,12 @@ app.post("/api/v1/createEmployee", async (req, res) => {
 app.put("/api/v1/updateEmployee/:id", async (req, res) => {
   const { id } = req.params;
   res.json(await updateEmployee(id, req.body));
+});
+
+// DELETE
+app.delete("/api/v1/deleteEmployee/:id", async (req, res) => {
+  const { id } = req.params;
+  res.json(await deleteEmployee(id));
 });
 
 app.listen(PORT, (error) => {
