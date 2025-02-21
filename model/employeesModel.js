@@ -1,21 +1,21 @@
-import employeesModel from "../schema/employeesSchema";
+import employeesModel from "../schema/employeesSchema.js";
 
 export const getEmployees = () => {
-  employeesModel.find();
+  return employeesModel.find();
 };
 
 export const getEmployee = (id) => {
-  employeesModel.find(id);
+  return employeesModel.find(id);
 };
 
 export const createEmployee = (employeeObject) => {
-  employeesModel(employeeObject).save();
+  return employeesModel(employeeObject).save();
 };
 
 export const updateEmployee = (id, updatedEmployee) => {
-  employeesModel.findByIdAndUpdate(id, updatedEmployee);
+  return employeesModel.findByIdAndUpdate(id, updatedEmployee);
 };
 
 export const deleteEmployee = (id) => {
-  employeesModel.findByIdAndDelete(id);
+  return employeesModel.findByIdAndDelete(id);
 };
