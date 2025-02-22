@@ -1,7 +1,7 @@
 import express from "express";
-import { connectToMongoDB } from "./config/dbConfig.js";
-import employeesRouter from "./routes/employeesRouter.js";
-import customersRouter from "./routes/customersRouter.js";
+import { connectToMongoDB } from "./src/config/dbConfig.js";
+import employeesRouter from "./src/routes/employeesRouter.js";
+import customersRouter from "./src/routes/customersRouter.js";
 
 const PORT = 3000;
 const app = express();
