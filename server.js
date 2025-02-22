@@ -1,12 +1,6 @@
 import express from "express";
 import { connectToMongoDB } from "./config/dbConfig.js";
-import {
-  createEmployee,
-  deleteEmployee,
-  getEmployee,
-  getEmployees,
-  updateEmployee,
-} from "./model/employeesModel.js";
+import employeesRouter from "./routes/employeesRouter.js";
 
 const PORT = 3000;
 const app = express();
@@ -15,33 +9,8 @@ app.use(express.json());
 
 connectToMongoDB();
 
-// GET | INDEX
-app.get("/api/v1/getEmployees", async (req, res) => {
-  res.json(await getEmployees());
-});
-
-// GET | SHOW
-app.get("/api/v1/getEmployee/:id", async (req, res) => {
-  const { id } = req.params;
-  res.json(await getEmployee(id));
-});
-
-// CREATE
-app.post("/api/v1/createEmployee", async (req, res) => {
-  res.json(await createEmployee(req.body));
-});
-
-// UPDATE
-app.put("/api/v1/updateEmployee/:id", async (req, res) => {
-  const { id } = req.params;
-  res.json(await updateEmployee(id, req.body));
-});
-
-// DELETE
-app.delete("/api/v1/deleteEmployee/:id", async (req, res) => {
-  const { id } = req.params;
-  res.json(await deleteEmployee(id));
-});
+// Employees Routes
+app.use("api/v1/employees", employeesRouter);
 
 app.listen(PORT, (error) => {
   error
