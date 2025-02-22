@@ -10,7 +10,7 @@ app.use(express.json());
 connectToMongoDB();
 
 // Employees Routes
-app.use("api/v1/employees", employeesRouter);
+app.use("/api/v1/employees", employeesRouter);
 
 app.listen(PORT, (error) => {
   error
